@@ -25,8 +25,9 @@ public class UserController {
     public @ResponseBody
     ResponseEntity<UserModel>
     getUserById(@PathVariable @NotEmpty String id) {
-
-        return null;
+        UserModel response = userService.getCurrentPosition(Integer.parseInt(id));
+        if (response == null) throw new NoSuchElementException();
+        return ResponseEntity.ok(response);
 
     }
 
@@ -34,7 +35,7 @@ public class UserController {
     public @ResponseBody
     ResponseEntity<UserModel>
     moveTokenById(@PathVariable @NotEmpty  String id, @RequestBody @Valid MoveModel moveModel) {
-
-        return null;
+        UserModel response = userService.moveToken(Integer.parseInt(id),moveModel.getStep());
+        return ResponseEntity.ok(response);
     }
 }

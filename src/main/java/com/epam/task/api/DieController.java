@@ -20,7 +20,7 @@ public class DieController {
 
     @GetMapping("")
     ResponseEntity<DieModel> rollDie(){
-        return  null;
+        return  ResponseEntity.ok(dieService.rollDie());
     }
 
 }

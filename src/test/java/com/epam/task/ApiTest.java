@@ -43,13 +43,13 @@ public class ApiTest {
     @Test
     public void testMoveUser() throws Exception {
         mockMvc.perform(patch("/users/1/moveToken").contentType("application/vnd.api+json")
-                        .content("{\"move\":5}")).andExpect(status().isOk())
+                        .content("{\"step\":5}")).andExpect(status().isOk())
                 .andExpect(content().json("{\"id\":1,\"currentPlace\":6}"));
     }
     @Test
     public void testMoveUser_whenOutOfScope() throws Exception {
         mockMvc.perform(patch("/users/1/moveToken").contentType("application/vnd.api+json")
-                .content("{\"move\":8}")).andExpect(status().isBadRequest());
+                .content("{\"step\":8}")).andExpect(status().isBadRequest());
     }
 
     @Test

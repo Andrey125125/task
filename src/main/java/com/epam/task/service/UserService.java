@@ -14,10 +14,18 @@ public class UserService {
     }
 
     public UserModel getCurrentPosition(int id){
-        return null;
+        return userRepository.getUserModelById(id);
     }
 
     public UserModel moveToken(int id, int steps){
-        return null;
+        UserModel userModel = userRepository.getUserModelById(id);
+
+        if (userModel.getCurrentPlace() + steps > 100) return userModel;
+
+        userModel.setCurrentPlace(userModel.getCurrentPlace() + steps);
+
+        userRepository.save(userModel);
+
+        return userModel;
     }
 }

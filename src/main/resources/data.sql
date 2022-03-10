@@ -1,0 +1,1 @@
+INSERT INTO user_model (id, current_place) VALUES (1, 1);

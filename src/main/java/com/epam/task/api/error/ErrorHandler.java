@@ -1,5 +1,9 @@
 package com.epam.task.api.error;
 
+import com.epam.task.exception.CanNotAddUserWhenGameIsStartedException;
+import com.epam.task.exception.DieAlreadyRolledException;
+import com.epam.task.exception.DieMustBeRolledBeforeMakingMoveException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -10,13 +14,18 @@ import java.util.NoSuchElementException;
 @ControllerAdvice
 public class ErrorHandler {
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<String> handle(MethodArgumentNotValidException e) {
-        return ResponseEntity.badRequest().body("wrong input " + e.getMessage());
+    @ExceptionHandler(DieAlreadyRolledException.class)
+    public ResponseEntity handle(DieAlreadyRolledException e) {
+        return  ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
     }
 
-    @ExceptionHandler(NoSuchElementException.class)
-    public ResponseEntity.HeadersBuilder <?> handle(NoSuchElementException e) {
-        return ResponseEntity.notFound();
+    @ExceptionHandler(CanNotAddUserWhenGameIsStartedException.class)
+    public ResponseEntity handle(CanNotAddUserWhenGameIsStartedException e) {
+        return  ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+    }
+
+    @ExceptionHandler(DieMustBeRolledBeforeMakingMoveException.class)
+    public ResponseEntity handle(DieMustBeRolledBeforeMakingMoveException e) {
+        return  ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
     }
 }

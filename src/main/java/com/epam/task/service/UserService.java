@@ -1,31 +1,46 @@
 package com.epam.task.service;
 
+import com.epam.task.dto.DieDto;
+import com.epam.task.dto.UserDto;
 import com.epam.task.model.UserModel;
+import com.epam.task.repository.SnakesAndLaddersRepository;
 import com.epam.task.repository.UserRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.*;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
+    private final SnakesAndLaddersRepository snakesAndLaddersRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, SnakesAndLaddersRepository snakesAndLaddersRepository) {
+        this.snakesAndLaddersRepository = snakesAndLaddersRepository;
         this.userRepository = userRepository;
     }
 
-    public UserModel getCurrentPosition(int id){
-        return userRepository.getUserModelById(id);
+    public UserDto makeMove(){
+        return null;
+
     }
 
-    public UserModel moveToken(int id, int steps){
-        UserModel userModel = userRepository.getUserModelById(id);
+    public DieDto rollDie(){
 
-        if (userModel.getCurrentPlace() + steps > 100) return userModel;
 
-        userModel.setCurrentPlace(userModel.getCurrentPlace() + steps);
+        return null;
+    }
 
-        userRepository.save(userModel);
+    public UserDto addUser(){
+        return null;
+    }
 
-        return userModel;
+    public List<UserModel> findUsers(){
+        return null;
+    }
+
+
+    public UserModel restartGame(){
+        return null;
     }
 }

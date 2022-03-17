@@ -1,7 +1,6 @@
 package com.epam.task.api;
 
 
-import com.epam.task.model.MoveModel;
 import com.epam.task.model.UserModel;
 import com.epam.task.service.UserService;
 import org.springframework.http.ResponseEntity;

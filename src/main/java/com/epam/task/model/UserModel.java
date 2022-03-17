@@ -20,11 +20,16 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class UserModel {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
     private int id;
 
 
-    @Column(name = "current_place")
+    @Column( name = "current_place", columnDefinition = "integer default 1")
     private int currentPlace;
+
+    @Column (columnDefinition = "integer default 0")
+    private int step;
+
+    @Column
+    private boolean current = true;
 
 }

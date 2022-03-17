@@ -1,7 +1,6 @@
 package com.epam.task.service;
 
 
-import com.epam.task.model.DieModel;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;

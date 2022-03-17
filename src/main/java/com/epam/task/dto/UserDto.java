@@ -1,4 +1,4 @@
-package com.epam.task.model;
+package com.epam.task.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DieModel {
+public class UserDto {
 
-    private int num;
+    private int id;
+
+    private int currentPlace;
 }

@@ -1,7 +1,6 @@
 package com.epam.task.api;
 
 
-import com.epam.task.model.DieModel;
 import com.epam.task.service.DieService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

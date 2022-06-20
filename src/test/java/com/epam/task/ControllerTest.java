@@ -11,6 +11,7 @@ import com.epam.task.model.UserModel;
 import com.epam.task.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.Order;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -44,6 +45,7 @@ public class ControllerTest {
     }
 
     @Test
+    @Order(1)
     public void makeMoveExceptionTest() throws Exception {
         when(userService.makeMove()).thenThrow(new DieMustBeRolledBeforeMakingMoveException());
         mockMvc.perform(post("/users/makeMove"))
@@ -53,6 +55,7 @@ public class ControllerTest {
 
 
     @Test
+    @Order(2)
     public void makeMoveTest() throws Exception {
         when(userService.makeMove()).thenReturn(new UserDto(1,1));
         mockMvc.perform(post("/users/makeMove"))
@@ -61,6 +64,7 @@ public class ControllerTest {
     }
 
     @Test
+    @Order(3)
     public void rollDieTest() throws Exception {
         when(userService.rollDie()).thenReturn(new DieDto(4));
         mockMvc.perform(post("/users/rollDie"))
@@ -68,6 +72,7 @@ public class ControllerTest {
                 .andExpect(content().json("{\"rolledNum\":4}"));
     }
     @Test
+    @Order(4)
     public void rollDieTestException() throws Exception {
         when(userService.rollDie()).thenThrow(new DieAlreadyRolledException());
         mockMvc.perform(post("/users/rollDie"))
@@ -76,6 +81,7 @@ public class ControllerTest {
 
 
     @Test
+    @Order(5)
     public void addUserExceptionTest() throws Exception {
         when(userService.addUser()).thenThrow(new CanNotAddUserWhenGameIsStartedException());
         mockMvc.perform(post("/users/addUser"))
@@ -83,6 +89,7 @@ public class ControllerTest {
     }
 
     @Test
+    @Order(6)
     public void addUserTest() throws Exception {
         when(userService.addUser()).thenReturn(new UserDto(2, 1));
         mockMvc.perform(post("/users/addUser"))
@@ -92,6 +99,7 @@ public class ControllerTest {
 
 
     @Test
+    @Order(7)
     public void restartGameTest() throws Exception {
         when(userService.restartGame()).thenReturn(new UserModel(1, 1, 0, true));
 
@@ -101,6 +109,7 @@ public class ControllerTest {
     }
 
     @Test
+    @Order(8)
     public void findUsersTest() throws Exception {
         when(userService.findUsers()).thenReturn(Arrays.asList(new UserModel(1, 1, 0, true),
                 new UserModel(2, 1, 0, false)));
